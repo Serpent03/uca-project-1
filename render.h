@@ -4,11 +4,13 @@
 #define WIDTH 40
 #define HEIGHT 20
 #define TPIXEL WIDTH * HEIGHT
+#define REFRESH_TIME 20 // in ms
 #define FLUSH system("cls")
 
 extern int BUFFER1[TPIXEL];
 extern int BUFFER2[TPIXEL];
 extern int* BITMAP;
+extern int* BG_BITMAP;
 extern int PROCESSING;
 extern int ISBUFFER2FLAG; // is BUFFER2 selected?
 
@@ -16,6 +18,7 @@ extern int ISBUFFER2FLAG; // is BUFFER2 selected?
 void RESET();
 void SET();
 void DISPLAY();
+void RENDER();
 void WAIT(int wT);
 
 // MEMORY & BUFFER
