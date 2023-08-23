@@ -4,14 +4,16 @@
 #define WIDTH 60
 #define HEIGHT 25
 #define TPIXEL WIDTH * HEIGHT
-#define REFRESH_TIME 20 // in ms
+#define REFRESH_TIME 100 // in ms
 
 #ifdef _WIN32
 #define FLUSH system("cls")
+#include <windows.h>
 #endif
 
 #ifdef linux
 #define FLUSH system("clear")
+#include <unistd.h>
 #endif
 
 extern int BUFFER1[TPIXEL];

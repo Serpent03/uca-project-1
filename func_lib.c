@@ -1,6 +1,5 @@
 #include <stdlib.h>
 #include <stdio.h>
-#include <time.h>
 #include "render.h"
 
 void RESET()
@@ -53,12 +52,7 @@ void RENDER()
 
 void WAIT(int wT)
 {
-    int waitTime = wT;
-    clock_t cStart = clock();
-    while (clock() < cStart + waitTime)
-    {
-        ;
-    }
+    sleep(wT / 1000);
 }
 
 int GET_MEMLOC(int x, int y)
