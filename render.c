@@ -5,7 +5,7 @@
 int BUFFER1[TPIXEL];
 int BUFFER2[TPIXEL];
 int *BITMAP = BUFFER1;
-int* BG_BITMAP;
+int *BG_BITMAP;
 int ISBUFFER2FLAG = 0;
 
 int PROCESSING = 1;
@@ -14,8 +14,8 @@ int PROCESSING = 1;
 // STEPS:
 // BUFFER SWITCH MECHANISM ✅
 // CREATE A REUPDATING DISPLAY ✅
-// EDIT NON-DISPLAYING BUFFER
-// READ FROM FILE INTO BITMAP 
+// EDIT NON-DISPLAYING BUFFER ✅
+// READ FROM FILE INTO BITMAP
 // RENDER BITMAP AND DISPLAY
 
 int iter = 0;
@@ -33,11 +33,10 @@ int main()
 {
     FLUSH;
     CHG_BUF(); // 2
-    SET(); // just flip buffer 2 to up for now
+    SET();     // just flip buffer 2 to up for now
 
     while (iter < 100)
     {
-
         CHG_BUF(); // 1
         // edit 2 here??
         RANDOM_BUF();

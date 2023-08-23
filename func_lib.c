@@ -34,7 +34,7 @@ void DISPLAY()
         for (int j = 0; j < WIDTH; j++)
         {
             int MEMLOC = GET_MEMLOC(j + 1, i + 1);
-            (BITMAP[MEMLOC] == 1) ? printf("?") : printf(" ");
+            (BITMAP[MEMLOC] == 1) ? printf("~") : printf(" ");
         }
         printf("\n");
     }
@@ -66,7 +66,7 @@ int GET_MEMLOC(int x, int y)
 
 void CHK_BUF()
 {
-    ISBUFFER2FLAG =  (BITMAP == BUFFER2);
+    ISBUFFER2FLAG = (BITMAP == BUFFER2);
 }
 
 void CHG_BUF()
