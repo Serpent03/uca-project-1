@@ -34,11 +34,14 @@ void DISPLAY()
         for (int j = 0; j < WIDTH; j++)
         {
             int MEMLOC = GET_MEMLOC(j + 1, i + 1);
-            (BITMAP[MEMLOC] == 1) ? printf("~") : printf(" ");
+            (BITMAP[MEMLOC] == 1) ? printf("*") : printf(" ");
         }
         printf("\n");
     }
-    printf("\n");
+    for (int i = 0; i < 4; i++)
+    {
+        printf("\n");
+    }
 }
 
 void RENDER()
@@ -73,6 +76,18 @@ void CHG_BUF()
 {
     BITMAP = (ISBUFFER2FLAG) ? BUFFER1 : BUFFER2;
     ISBUFFER2FLAG = !ISBUFFER2FLAG;
+}
+
+void LOAD_BUF(int frame)
+{
+    BG_BITMAP = (ISBUFFER2FLAG) ? BUFFER1 : BUFFER2;
+    char filename[20];
+    sprintf(filename, "./out/%d.txt", frame);
+    FILE* file = fopen(filename, "r");
+    for (int i = 0; i < TPIXEL; i++)
+    {
+        fscanf(file, "%d,", &BG_BITMAP[i]);
+    }
 }
 
 void printA(int *pArr, int pArrLen)
