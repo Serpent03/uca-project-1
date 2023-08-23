@@ -12,9 +12,10 @@ outPath = './out/'
 inPath = listdir(imgPath)
 ctr = 1
 
-for file in inPath:
-    print(f'{imgPath}{file}')
-    im = cv2.imread(f'{imgPath}{file}')
+
+for i in range(len(inPath)):
+    file = i + 1
+    im = cv2.imread(f'{imgPath}{file}.png')
     grayImage = cv2.cvtColor(im, cv2.COLOR_BGR2GRAY)
   
     (thresh, blackAndWhiteImage) = cv2.threshold(grayImage, 127, 255, cv2.THRESH_BINARY)
@@ -27,8 +28,4 @@ for file in inPath:
                 f.write(f"{num},")
     ctr += 1
 
-# print(len(goodRes))
-
-
-cv2.waitKey(0)
-cv2.destroyAllWindows()
+print("finished")
