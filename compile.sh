@@ -4,4 +4,4 @@ gcc render.c -o main -L . rlib.a
 rm *.o
 rm *.a
 clear
-./main.exe
+# ./main

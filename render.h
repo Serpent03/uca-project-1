@@ -1,16 +1,23 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#define WIDTH 40
-#define HEIGHT 20
+#define WIDTH 64
+#define HEIGHT 36
 #define TPIXEL WIDTH * HEIGHT
-#define REFRESH_TIME 20 // in ms
+#define REFRESH_TIME 120 // in ms
+
+#ifdef _WIN32
 #define FLUSH system("cls")
+#endif
+
+#ifdef linux
+#define FLUSH system("clear")
+#endif
 
 extern int BUFFER1[TPIXEL];
 extern int BUFFER2[TPIXEL];
-extern int* BITMAP;
-extern int* BG_BITMAP;
+extern int *BITMAP;
+extern int *BG_BITMAP;
 extern int PROCESSING;
 extern int ISBUFFER2FLAG; // is BUFFER2 selected?
 
@@ -27,4 +34,4 @@ void CHK_BUF();
 void CHG_BUF();
 
 // MISC
-void printA(int* pArr, int pArrLen);
+void printA(int *pArr, int pArrLen);
