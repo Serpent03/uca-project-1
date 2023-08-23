@@ -22,13 +22,13 @@ int PROCESSING = 1;
 // CORRECT FRAME SEQUENCE RENDERING ✅
 // SOUND INITIALIZATION 
 
-int iter = 0;
+int iter = 1;
 
 int main(int argc, char **argv)
 {
     int maxFrame = atoi(argv[1]);
     FLUSH;
-    while (iter <= maxFrame)
+    while (iter < maxFrame)
     {
         CHG_BUF();                // FRAME 1 UP
         LOAD_BUF(iter); // edit 2 here
