@@ -34,11 +34,18 @@ void DISPLAY()
         for (int j = 0; j < WIDTH; j++)
         {
             int MEMLOC = GET_MEMLOC(j + 1, i + 1);
-            (BITMAP[MEMLOC] == 1) ? printf("`") : printf(" ");
+            (BITMAP[MEMLOC] == 1) ? printf("?") : printf(" ");
         }
         printf("\n");
     }
     printf("\n");
+}
+
+void RENDER()
+{
+    FLUSH;
+    DISPLAY();
+    WAIT(REFRESH_TIME);
 }
 
 void WAIT(int wT)
@@ -64,7 +71,6 @@ void CHK_BUF()
 
 void CHG_BUF()
 {
-    FLUSH;
     BITMAP = (ISBUFFER2FLAG) ? BUFFER1 : BUFFER2;
     ISBUFFER2FLAG = !ISBUFFER2FLAG;
 }
