@@ -18,33 +18,22 @@ int PROCESSING = 1;
 // READ FROM FILE INTO BITMAP
 // RENDER BITMAP AND DISPLAY
 
-int iter = 0;
-
-void RANDOM_BUF()
-{
-    BG_BITMAP = (ISBUFFER2FLAG) ? BUFFER1 : BUFFER2;
-    for (int i = 0; i < TPIXEL; i++)
-    {
-        BG_BITMAP[i] = (rand() % 2 == 0);
-    }
-}
+int iter = 1;
 
 int main()
 {
     FLUSH;
-    CHG_BUF(); // 2
+    CHG_BUF(); // FRAME 2 UP
     SET();     // just flip buffer 2 to up for now
 
-    while (iter < 100)
+    while (iter <= 60)
     {
-        CHG_BUF(); // 1
-        // edit 2 here??
-        RANDOM_BUF();
+        CHG_BUF(); // FRAME 1 UP
+        LOAD_BUF((iter % 4) + 1); // edit 2 here
         RENDER();
-
-        CHG_BUF(); // 2
-        // edit 1 here??
-        RANDOM_BUF();
+        iter++;
+        CHG_BUF(); // FRAME 2 UP
+        LOAD_BUF((iter % 4) + 1); // edit 1 here
         RENDER();
 
         iter++;

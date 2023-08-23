@@ -1,10 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#define WIDTH 64
-#define HEIGHT 36
+#define WIDTH 60
+#define HEIGHT 25
 #define TPIXEL WIDTH * HEIGHT
-#define REFRESH_TIME 120 // in ms
+#define REFRESH_TIME 66 // in ms
 
 #ifdef _WIN32
 #define FLUSH system("cls")
@@ -32,6 +32,7 @@ void WAIT(int wT);
 int GET_MEMLOC(int x, int y);
 void CHK_BUF();
 void CHG_BUF();
+void LOAD_BUF(int frame);
 
 // MISC
 void printA(int *pArr, int pArrLen);
