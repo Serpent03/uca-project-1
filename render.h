@@ -4,7 +4,7 @@
 #define WIDTH 60
 #define HEIGHT 25
 #define TPIXEL WIDTH * HEIGHT
-#define REFRESH_TIME 66 // in ms
+#define REFRESH_TIME 20 // in ms
 
 #ifdef _WIN32
 #define FLUSH system("cls")
