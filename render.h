@@ -8,12 +8,10 @@
 
 #ifdef _WIN32
 #define FLUSH system("cls")
-#include <windows.h>
 #endif
 
-#ifdef linux
+#ifdef __unix__
 #define FLUSH system("clear")
-#include <unistd.h>
 #endif
 
 extern int BUFFER1[TPIXEL];

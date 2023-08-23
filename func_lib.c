@@ -1,6 +1,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include "render.h"
+#include <time.h>
 
 void RESET()
 {
@@ -52,7 +53,14 @@ void RENDER()
 
 void WAIT(int wT)
 {
+#ifdef _WIN32
     sleep(wT / 1000);
+#else
+    struct timespec ts;
+    ts.tv_sec = milliseconds / 1000;
+    ts.tv_nsec = (milliseconds % 1000) * 1000000;
+    nanosleep(&ts, NULL);
+#endif
 }
 
 int GET_MEMLOC(int x, int y)
@@ -78,7 +86,7 @@ void LOAD_BUF(int frame)
     char filename[20];
     sprintf(filename, "./out/%d.txt", frame);
     printf("%s\n", filename);
-    FILE* file = fopen(filename, "r");
+    FILE *file = fopen(filename, "r");
     for (int i = 0; i < TPIXEL; i++)
     {
         fscanf(file, "%d,", &BG_BITMAP[i]);
