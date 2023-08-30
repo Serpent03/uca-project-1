@@ -34,7 +34,7 @@ void DISPLAY()
         for (int j = 0; j < WIDTH; j++)
         {
             int MEMLOC = GET_MEMLOC(j + 1, i + 1);
-            (BITMAP[MEMLOC] == 1) ? printf(".") : printf(" ");
+            (BITMAP[MEMLOC] == 1) ? printf(BUFFER_CHAR) : printf(" ");
         }
         printf("\n");
     }
@@ -82,6 +82,7 @@ void CHG_BUF()
 
 void LOAD_BUF(int frame)
 {
+    // get the frame from the FFMPEG 'API'
     BG_BITMAP = (ISBUFFER2FLAG) ? BUFFER1 : BUFFER2;
     char filename[20];
     sprintf(filename, "./out/%d.txt", frame);
