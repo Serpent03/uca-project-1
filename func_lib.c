@@ -63,7 +63,7 @@ void WAIT(int wT)
 #else
     struct timespec ts;
     ts.tv_sec = wT / 1000;
-    ts.tv_nsec = (wT % 1000) * 1000;
+    ts.tv_nsec = (wT % 1000) * 1000000;
     nanosleep(&ts, NULL);
 #endif
 }
