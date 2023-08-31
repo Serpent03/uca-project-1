@@ -4,7 +4,7 @@
 #define WIDTH 60
 #define HEIGHT 25
 #define TPIXEL WIDTH * HEIGHT
-#define REFRESH_TIME 100 // in ms
+#define REFRESH_TIME 33 // in ms
 #define BUFFER_CHAR "@"
 
 #ifdef _WIN32

@@ -54,11 +54,16 @@ void RENDER()
 void WAIT(int wT)
 {
 #ifdef _WIN32
-    sleep(wT / 1000);
+    int waitTime = wT;
+    clock_t cStart = clock();
+    while (clock() < cStart + waitTime)
+    {
+        ;
+    }
 #else
     struct timespec ts;
     ts.tv_sec = wT / 1000;
-    ts.tv_nsec = (wT % 1000) * 1000000;
+    ts.tv_nsec = (wT % 1000) * 1000;
     nanosleep(&ts, NULL);
 #endif
 }
