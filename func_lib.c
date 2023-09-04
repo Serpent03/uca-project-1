@@ -3,6 +3,8 @@
 #include "render.h"
 #include <time.h>
 
+FILE* fileP;
+
 void RESET()
 {
     for (int i = 0; i < TPIXEL; i++)
@@ -94,10 +96,9 @@ void LOAD_BUF(int frame)
     char filename[20];
     sprintf(filename, "./out/%d.txt", frame);
     printf("%s\n", filename);
-    FILE *file = fopen(filename, "r");
-    fgets(BG_BITMAP, TPIXEL+1, file);
-    fclose(file);
-    file = NULL;
+    fileP = fopen(filename, "r");
+    fgets(BG_BITMAP, TPIXEL+1, fileP);
+    fclose(fileP);
 }
 
 void printA(int *pArr, int pArrLen)

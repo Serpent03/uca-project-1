@@ -20,6 +20,7 @@ extern char BUFFER2[TPIXEL];
 extern char *BITMAP;
 extern char *BG_BITMAP;
 extern int ISBUFFER2FLAG; // is BUFFER2 selected?
+extern FILE* fileP;
 
 // DISPLAY
 void RESET();
