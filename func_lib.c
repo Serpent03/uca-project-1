@@ -7,7 +7,7 @@ void RESET()
 {
     for (int i = 0; i < TPIXEL; i++)
     {
-        BITMAP[i] = 0;
+        BITMAP[i] = '0';
     }
 }
 
@@ -15,7 +15,7 @@ void SET()
 {
     for (int i = 0; i < TPIXEL; i++)
     {
-        BITMAP[i] = 1;
+        BITMAP[i] = '1';
     }
 }
 
@@ -38,6 +38,7 @@ void DISPLAY()
             // interesting. why doesn't this work
             // with %c?
             printf("%s", charToPrint);
+            free(charToPrint);
         }
         printf("\n");
     }
@@ -51,7 +52,7 @@ void RENDER()
 {
     FLUSH;
     DISPLAY();
-    WAIT(REFRESH_TIME);
+    // WAIT(REFRESH_TIME);
 }
 
 void WAIT(int wT)
