@@ -13,7 +13,7 @@ inPath = listdir(imgPath)
 ctr = 1
 
 
-for i in range(len(inPath)):
+for i in range(len(inPath)-1):
     file = i + 1
     im = cv2.imread(f'{imgPath}{file}.png')
     grayImage = cv2.cvtColor(im, cv2.COLOR_BGR2GRAY)
