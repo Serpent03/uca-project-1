@@ -13,7 +13,7 @@ inPath = listdir(imgPath)
 ctr = 1
 
 
-for i in range(len(inPath)):
+for i in range(len(inPath)-1):
     file = i + 1
     im = cv2.imread(f'{imgPath}{file}.png')
     grayImage = cv2.cvtColor(im, cv2.COLOR_BGR2GRAY)
@@ -25,7 +25,7 @@ for i in range(len(inPath)):
         for height in goodRes:
             for width in height:
                 num = 1 if width == 255 else 0
-                f.write(f"{num},")
+                f.write(f"{num}")
     ctr += 1
 
 print("finished")

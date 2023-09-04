@@ -5,7 +5,7 @@
 #define HEIGHT 25
 #define TPIXEL WIDTH * HEIGHT
 #define REFRESH_TIME 33 // in ms
-#define BUFFER_CHAR "*"
+#define BUFFER_CHAR "@"
 
 #ifdef _WIN32
 #define FLUSH system("cls")
@@ -15,10 +15,10 @@
 #define FLUSH system("clear")
 #endif
 
-extern int BUFFER1[TPIXEL];
-extern int BUFFER2[TPIXEL];
-extern int *BITMAP;
-extern int *BG_BITMAP;
+extern char BUFFER1[TPIXEL];
+extern char BUFFER2[TPIXEL];
+extern char *BITMAP;
+extern char *BG_BITMAP;
 extern int ISBUFFER2FLAG; // is BUFFER2 selected?
 
 // DISPLAY
