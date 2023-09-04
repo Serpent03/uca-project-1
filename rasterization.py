@@ -25,7 +25,7 @@ for i in range(len(inPath)):
         for height in goodRes:
             for width in height:
                 num = 1 if width == 255 else 0
-                f.write(f"{num},")
+                f.write(f"{num}")
     ctr += 1
 
 print("finished")
