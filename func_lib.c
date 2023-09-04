@@ -42,17 +42,15 @@ void DISPLAY()
         }
         printf("\n");
     }
-    // for (int i = 0; i < 4; i++)
-    // {
-    //     printf("\n");
-    // }
+    printf("\n\n\n\n\n");
+    // some whitespace
 }
 
 void RENDER()
 {
     FLUSH;
     DISPLAY();
-    // WAIT(REFRESH_TIME);
+    WAIT(REFRESH_TIME);
 }
 
 void WAIT(int wT)
