@@ -34,14 +34,17 @@ void DISPLAY()
         for (int j = 0; j < WIDTH; j++)
         {
             int MEMLOC = GET_MEMLOC(j + 1, i + 1);
-            (BITMAP[MEMLOC] == 1) ? printf(BUFFER_CHAR) : printf(" ");
+            char* charToPrint = (BITMAP[MEMLOC] == '1') ? BUFFER_CHAR : " ";
+            // interesting. why doesn't this work
+            // with %c?
+            printf("%s", charToPrint);
         }
         printf("\n");
     }
-    for (int i = 0; i < 4; i++)
-    {
-        printf("\n");
-    }
+    // for (int i = 0; i < 4; i++)
+    // {
+    //     printf("\n");
+    // }
 }
 
 void RENDER()
@@ -93,11 +96,9 @@ void LOAD_BUF(int frame)
     sprintf(filename, "./out/%d.txt", frame);
     printf("%s\n", filename);
     FILE *file = fopen(filename, "r");
-    for (int i = 0; i < TPIXEL; i++)
-    {
-        fscanf(file, "%d,", &BG_BITMAP[i]);
-    }
+    fgets(BG_BITMAP, TPIXEL+1, file);
     fclose(file);
+    file = NULL;
 }
 
 void printA(int *pArr, int pArrLen)

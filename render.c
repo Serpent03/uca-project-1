@@ -2,10 +2,10 @@
 #include <stdlib.h>
 #include "render.h"
 
-int BUFFER1[TPIXEL];
-int BUFFER2[TPIXEL];
-int *BITMAP = BUFFER1;
-int *BG_BITMAP;
+char BUFFER1[TPIXEL];
+char BUFFER2[TPIXEL];
+char *BITMAP = BUFFER1;
+char *BG_BITMAP;
 int ISBUFFER2FLAG = 0;
 
 // simulate BAD APPLE
