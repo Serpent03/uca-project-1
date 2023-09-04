@@ -4,7 +4,7 @@ from os import listdir
 # read imgs, resize to
 # definition sizes
 
-rw, rh = 40, 15
+rw, rh = 160, 120
 
 imgPath = './img/'
 outPath = './out/'
@@ -28,4 +28,4 @@ for i in range(len(inPath)-1):
                 f.write(f"{num}")
     ctr += 1
 
-print("finished")
+print(f"{ctr} finished")
