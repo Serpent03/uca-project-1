@@ -4,7 +4,7 @@ from os import listdir
 # read imgs, resize to
 # definition sizes
 
-rw, rh = 80, 30
+rw, rh = 40, 15
 
 imgPath = './img/'
 outPath = './out/'
