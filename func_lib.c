@@ -56,7 +56,7 @@ void WAIT(int wT)
 #ifdef _WIN32
     int waitTime = wT;
     clock_t cStart = clock();
-    while (clock() < cStart + waitTime)
+    while (clock() <= cStart + waitTime)
     {
         ;
     }

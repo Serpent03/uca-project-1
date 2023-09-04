@@ -8,8 +8,6 @@ int *BITMAP = BUFFER1;
 int *BG_BITMAP;
 int ISBUFFER2FLAG = 0;
 
-int PROCESSING = 1;
-
 // simulate BAD APPLE
 // STEPS:
 // BUFFER SWITCH MECHANISM ✅
@@ -41,6 +39,5 @@ int main(int argc, char **argv)
         LOAD_BUF(iter); // edit 1 here
         RENDER();
         iter++;
-        printf("%d\n", iter);
     }
 }
