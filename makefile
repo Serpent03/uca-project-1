@@ -5,6 +5,7 @@ libName = rlib
 
 main: render.c rlib.a
 	${cc} render.c -o main -L . ${libName}.a
+	${bash} "./extract.sh"
 
 rlib.a:	func_lib.c render.h
 	${cc} ${ccFlags} -c func_lib.c
