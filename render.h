@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#define WIDTH 60
-#define HEIGHT 25
+#define WIDTH 80
+#define HEIGHT 30
 #define TPIXEL WIDTH * HEIGHT
 #define REFRESH_TIME 10 // in ms
 #define BUFFER_CHAR "@"
