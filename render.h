@@ -1,10 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#define WIDTH 80
-#define HEIGHT 30
+#define WIDTH 40
+#define HEIGHT 15
 #define TPIXEL WIDTH * HEIGHT
-#define REFRESH_TIME 10 // in ms
+#define REFRESH_TIME 15 // in ms
 #define BUFFER_CHAR "@"
 
 #ifdef _WIN32

@@ -39,8 +39,7 @@ void DISPLAY()
             char* charToPrint = (BITMAP[MEMLOC] == '1') ? BUFFER_CHAR : " ";
             // interesting. why doesn't this work
             // with %c?
-            printf("%s", charToPrint);
-            free(charToPrint);
+            printf(charToPrint);
         }
         printf("\n");
     }
@@ -50,9 +49,12 @@ void DISPLAY()
 
 void RENDER()
 {
+    clock_t cStart = clock();
     FLUSH;
     DISPLAY();
     WAIT(REFRESH_TIME);
+    clock_t cEnd = clock();
+    printf("END: %f", (double) (cEnd - cStart) / CLOCKS_PER_SEC);
 }
 
 void WAIT(int wT)
@@ -60,7 +62,7 @@ void WAIT(int wT)
 #ifdef _WIN32
     int waitTime = wT;
     clock_t cStart = clock();
-    while (clock() <= cStart + waitTime)
+    while (clock() < cStart + waitTime)
     {
         ;
     }
@@ -95,7 +97,6 @@ void LOAD_BUF(int frame)
     BG_BITMAP = (ISBUFFER2FLAG) ? BUFFER1 : BUFFER2;
     char filename[20];
     sprintf(filename, "./out/%d.txt", frame);
-    printf("%s\n", filename);
     fileP = fopen(filename, "r");
     fgets(BG_BITMAP, TPIXEL+1, fileP);
     fclose(fileP);
