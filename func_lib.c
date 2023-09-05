@@ -2,23 +2,21 @@
 #include <stdio.h>
 #include "render.h"
 #include <time.h>
+#define SDL_MAIN_HANDLED
+#include "SDL/include/SDL2/SDL.h"
 
 FILE* fileP;
 
 void RESET()
 {
-    for (int i = 0; i < TPIXEL; i++)
-    {
-        BITMAP[i] = '0';
-    }
+    SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
+    SDL_RenderClear(renderer);
 }
 
 void SET()
 {
-    for (int i = 0; i < TPIXEL; i++)
-    {
-        BITMAP[i] = '1';
-    }
+    SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
+    SDL_RenderClear(renderer);
 }
 
 void DISPLAY()
@@ -36,14 +34,11 @@ void DISPLAY()
         for (int j = 0; j < WIDTH; j++)
         {
             int MEMLOC = GET_MEMLOC(j + 1, i + 1);
-            char* charToPrint = (BITMAP[MEMLOC] == '1') ? BUFFER_CHAR : " ";
-            // interesting. why doesn't this work
-            // with %c?
-            printf(charToPrint);
+            int fill = (BITMAP[MEMLOC] == '1') ? 255 : 0;
+            SDL_SetRenderDrawColor(renderer, fill, fill, fill, 255);
+            SDL_RenderDrawPoint(renderer, (j+1), (i+1));
         }
-        printf("\n");
     }
-    printf("\n\n\n\n\n");
     // some whitespace
 }
 
@@ -52,26 +47,29 @@ void RENDER()
     clock_t cStart = clock();
     FLUSH;
     DISPLAY();
-    WAIT(REFRESH_TIME);
+    SDL_RenderPresent(renderer);
+    // RESET();
+    WAIT();
     clock_t cEnd = clock();
     printf("END: %f", (double) (cEnd - cStart) / CLOCKS_PER_SEC);
 }
 
-void WAIT(int wT)
+void WAIT()
 {
-#ifdef _WIN32
-    int waitTime = wT;
-    clock_t cStart = clock();
-    while (clock() < cStart + waitTime)
-    {
-        ;
-    }
-#else
-    struct timespec ts;
-    ts.tv_sec = wT / 1000;
-    ts.tv_nsec = (wT % 1000) * 1000000;
-    nanosleep(&ts, NULL);
-#endif
+    SDL_Delay(REFRESH_TIME);
+    // #ifdef _WIN32
+    //     int waitTime = wT;
+    //     clock_t cStart = clock();
+    //     while (clock() < cStart + waitTime)
+    //     {
+    //         ;
+    //     }
+    // #else
+    //     struct timespec ts;
+    //     ts.tv_sec = wT / 1000;
+    //     ts.tv_nsec = (wT % 1000) * 1000000;
+    //     nanosleep(&ts, NULL);
+    // #endif
 }
 
 int GET_MEMLOC(int x, int y)
@@ -95,11 +93,12 @@ void LOAD_BUF(int frame)
 {
     // get the frame from the FFMPEG 'API'
     BG_BITMAP = (ISBUFFER2FLAG) ? BUFFER1 : BUFFER2;
-    char filename[20];
+    char filename[200];
     sprintf(filename, "./out/%d.txt", frame);
     fileP = fopen(filename, "r");
     fgets(BG_BITMAP, TPIXEL+1, fileP);
     fclose(fileP);
+    fileP = NULL;
 }
 
 void printA(int *pArr, int pArrLen)

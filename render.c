@@ -1,12 +1,16 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "render.h"
+#define SDL_MAIN_HANDLED
+#include "SDL/include/SDL2/SDL.h"
 
 char BUFFER1[TPIXEL];
 char BUFFER2[TPIXEL];
 char *BITMAP = BUFFER1;
 char *BG_BITMAP;
 int ISBUFFER2FLAG = 0;
+SDL_Window* window = NULL;
+SDL_Renderer* renderer = NULL;
 
 // simulate BAD APPLE
 // STEPS:
@@ -28,7 +32,13 @@ int iter = 1;
 int main(int argc, char **argv)
 {
     int maxFrame = atoi(argv[1]);
-    FLUSH;
+
+    SDL_Init(SDL_INIT_VIDEO);
+    SDL_CreateWindowAndRenderer(WIDTH, HEIGHT, 0, &window, &renderer);
+    SDL_RenderSetScale(renderer, 1, 1);
+    RESET();
+
+
     while (iter < maxFrame)
     {
         CHG_BUF();                // FRAME 1 UP

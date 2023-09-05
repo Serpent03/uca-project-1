@@ -4,7 +4,7 @@ bash = bash -c
 libName = rlib
 
 main: render.c rlib.a
-	${cc} render.c -o main -L . ${libName}.a
+	${cc} -ISDL/include -LSDL/lib render.c -o main -L . ${libName}.a  -lmingw32 -lSDL2 -lSDL2main
 	${bash} "./extract.sh"
 
 rlib.a:	func_lib.c render.h
